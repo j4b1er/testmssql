@@ -1,5 +1,9 @@
 import { fetchUsers } from "./users/actions";
 
+interface UserInterface {
+  Name: string;
+}
+
 export default async function Home() {
   const users = await fetchUsers();
 
@@ -7,7 +11,7 @@ export default async function Home() {
     <div>
       <h1>Users</h1>
       <ul>
-        {users.map((user, pos: number) => (
+        {users.map((user: UserInterface, pos: number) => (
           <li key={pos}>{user.Name}</li>
         ))}
       </ul>
